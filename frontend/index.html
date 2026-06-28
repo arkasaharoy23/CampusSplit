@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusSplit — Split Smarter, Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="#6C63FF"/>
+            <path d="M8 14h12M14 8v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="8" cy="14" r="2" fill="#A8FF78"/>
+            <circle cx="20" cy="14" r="2" fill="#A8FF78"/>
+            <circle cx="14" cy="8" r="2" fill="#A8FF78"/>
+            <circle cx="14" cy="20" r="2" fill="#A8FF78"/>
+          </svg>
+        </div>
+        <span class="logo-text">CampusSplit</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it Works</a></li>
+        <li><a href="#use-cases">For Everyone</a></li>
+        <li><a href="#testimonials">Stories</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn-ghost">Log in</a>
+        <a href="register.html" class="btn-primary">Get Started</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-layout">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          No more awkward money talks
+        </div>
+        <h1 class="hero-heading">
+          Split bills.<br/>
+          <span class="accent-underline">Keep friendships.</span>
+        </h1>
+        <p class="hero-tagline-hindi" lang="hi">पैसों की उलझन खत्म, रिश्ते हमेशा कायम।</p>
+        <p class="hero-sub">
+          CampusSplit helps friends, flatmates, colleagues, and families track shared expenses — fairly, transparently, and without drama.
+        </p>
+        <div class="hero-cta-row">
+          <a href="register.html" class="btn-primary btn-lg">
+            Start for free
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn-outline-light">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 9l2 2 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            See how it works
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Aisha" alt="user" />
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Rohan" alt="user" />
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Priya" alt="user" />
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Dev" alt="user" />
+          </div>
+          <p>Trusted by <strong>10,000+</strong> students & professionals</p>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="app-card main-card" id="mainCard">
+          <div class="card-header">
+            <div class="card-avatar" style="background:#7C3AED20;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#7C3AED" stroke-width="1.5"/><path d="M3 17c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <p class="card-title">Goa Trip 🏖️</p>
+              <p class="card-sub">5 members · ₹12,450 total</p>
+            </div>
+            <div class="card-status">Active</div>
+          </div>
+          <div class="card-expense-list">
+            <div class="expense-row">
+              <div class="exp-icon" style="background:#EDE9FE;">🍽️</div>
+              <div class="exp-info">
+                <p>Beach dinner</p>
+                <span>Rohan paid</span>
+              </div>
+              <p class="exp-amount">₹3,200</p>
+            </div>
+            <div class="expense-row">
+              <div class="exp-icon" style="background:#D1FAE5;">🏠</div>
+              <div class="exp-info">
+                <p>Hotel booking</p>
+                <span>Priya paid</span>
+              </div>
+              <p class="exp-amount">₹6,500</p>
+            </div>
+            <div class="expense-row">
+              <div class="exp-icon" style="background:#FEF3C7;">⛽</div>
+              <div class="exp-info">
+                <p>Fuel & toll</p>
+                <span>You paid</span>
+              </div>
+              <p class="exp-amount">₹2,750</p>
+            </div>
+          </div>
+          <div class="card-settle">
+            <p class="settle-label">Your balance</p>
+            <p class="settle-value positive">+₹1,840 to receive</p>
+            <button class="settle-btn">Settle up →</button>
+          </div>
+        </div>
+
+        <div class="app-card float-card float-card-1" id="floatCard1">
+          <p class="float-label">Debt Simplified</p>
+          <p class="float-val">3 → 1 payment</p>
+          <div class="float-bar">
+            <div class="float-fill" style="width:33%"></div>
+          </div>
+        </div>
+
+        <div class="app-card float-card float-card-2" id="floatCard2">
+          <span class="float-emoji">✅</span>
+          <div>
+            <p class="float-label">Settled</p>
+            <p class="float-mini">Aisha paid Rohan ₹640</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="marquee-strip">
+    <div class="marquee-track">
+      <span>Friends 🤝</span><span>Flatmates 🏠</span><span>Road Trips 🚗</span><span>Office Lunches 🍱</span><span>Family Holidays ✈️</span><span>College Groups 🎓</span><span>Movie Nights 🎬</span><span>Sports Teams ⚽</span>
+      <span>Friends 🤝</span><span>Flatmates 🏠</span><span>Road Trips 🚗</span><span>Office Lunches 🍱</span><span>Family Holidays ✈️</span><span>College Groups 🎓</span><span>Movie Nights 🎬</span><span>Sports Teams ⚽</span>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Why CampusSplit</p>
+        <h2>Built for real-life money moments</h2>
+        <p class="section-sub">Every feature exists because someone, somewhere, had an awkward conversation about money that didn't need to happen.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card feature-card--highlight">
+          <div class="feat-icon-wrap" style="background:#6C63FF15;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14h20M14 4v20" stroke="#6C63FF" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="14" r="4" stroke="#A8FF78" stroke-width="2"/></svg>
+          </div>
+          <h3>Smart Debt Simplification</h3>
+          <p>Automatically reduces multiple IOUs into the minimum number of payments. What once needed 8 transfers now needs just 2.</p>
+          <div class="feat-tag">AI-powered</div>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon-wrap" style="background:#10B98115;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="8" width="20" height="15" rx="2" stroke="#10B981" stroke-width="2"/><path d="M4 12h20" stroke="#10B981" stroke-width="2"/><path d="M9 17h3M16 17h3" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Flexible Split Options</h3>
+          <p>Split equally, by percentage, by exact amounts, or by shares — whatever is actually fair for your group.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon-wrap" style="background:#F59E0B15;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4L4 10v14h7v-6h6v6h7V10L14 4z" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Group Categories</h3>
+          <p>Create separate groups for your flat, your trip crew, your work team — each with its own complete expense history.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon-wrap" style="background:#EF444415;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4v10l6 3" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="14" r="10" stroke="#EF4444" stroke-width="2"/></svg>
+          </div>
+          <h3>Recurring Expenses</h3>
+          <p>Set up monthly rent, subscriptions, or regular expenses once — CampusSplit reminds your group automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon-wrap" style="background:#8B5CF615;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 22L10 16M10 16l4-8 4 8M10 16h8" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Spending Analytics</h3>
+          <p>See where your group's money actually goes. Category breakdowns, monthly trends, and per-person summaries.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon-wrap" style="background:#06B6D415;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14h3l3-6 4 12 3-9 2 3h5" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Real-time Sync</h3>
+          <p>Everyone in your group sees updates the moment they happen — no stale data, no he-said-she-said.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Simple by design</p>
+        <h2>From expense to settled in minutes</h2>
+      </div>
+      <div class="steps-layout">
+        <div class="steps-visual">
+          <div class="steps-mockup">
+            <div class="step-screen active" id="step-screen-1">
+              <div class="mockup-inner">
+                <p class="mockup-label">Create a group</p>
+                <div class="mockup-input-row">
+                  <div class="mockup-input filled">Goa Trip 2025</div>
+                  <div class="mockup-btn">Next →</div>
+                </div>
+                <div class="mockup-avatars-row">
+                  <div class="m-avatar" style="background:#EDE9FE">R</div>
+                  <div class="m-avatar" style="background:#D1FAE5">P</div>
+                  <div class="m-avatar" style="background:#FEF3C7">A</div>
+                  <div class="m-avatar add-more">+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="steps-list">
+          <div class="step-item active" data-step="1">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h3>Create a group</h3>
+              <p>Name your group, add members by email or invite link, and you're ready. Takes under a minute.</p>
+            </div>
+          </div>
+          <div class="step-item" data-step="2">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h3>Log expenses as they happen</h3>
+              <p>Add who paid, what for, and choose how to split. Done before you've put your phone back in your pocket.</p>
+            </div>
+          </div>
+          <div class="step-item" data-step="3">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h3>Review your balances</h3>
+              <p>CampusSplit shows each person exactly what they owe — and to whom. No spreadsheet required.</p>
+            </div>
+          </div>
+          <div class="step-item" data-step="4">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h3>Settle up & move on</h3>
+              <p>Mark payments as done when money changes hands. The group clears, balances reset, everyone's happy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="use-cases" id="use-cases">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">For everyone</p>
+        <h2>Whoever you share costs with</h2>
+      </div>
+      <div class="use-grid">
+        <div class="use-card" data-color="#6C63FF">
+          <div class="use-emoji">🎓</div>
+          <h3>College Friends</h3>
+          <p>Hostel supplies, canteen runs, sem trips — keep it fair without keeping score.</p>
+        </div>
+        <div class="use-card" data-color="#10B981">
+          <div class="use-emoji">🏠</div>
+          <h3>Flatmates</h3>
+          <p>Rent, groceries, WiFi, electricity — one place for every shared cost at home.</p>
+        </div>
+        <div class="use-card" data-color="#F59E0B">
+          <div class="use-emoji">🚗</div>
+          <h3>Travel Groups</h3>
+          <p>From fuel to hotel rooms — split every leg of the journey as it happens.</p>
+        </div>
+        <div class="use-card" data-color="#EF4444">
+          <div class="use-emoji">💼</div>
+          <h3>Work Colleagues</h3>
+          <p>Team lunches, offsite hotels, client dinners — no more reimbursement chaos.</p>
+        </div>
+        <div class="use-card" data-color="#8B5CF6">
+          <div class="use-emoji">👨‍👩‍👧‍👦</div>
+          <h3>Family</h3>
+          <p>Weddings, vacations, household expenses — everyone contributes, no one guesses.</p>
+        </div>
+        <div class="use-card" data-color="#06B6D4">
+          <div class="use-emoji">⚽</div>
+          <h3>Sports & Clubs</h3>
+          <p>Equipment, ground bookings, tournament fees — shared costs made transparent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <p class="stat-num" data-target="10000">0</p>
+          <p class="stat-label">Active users</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-num" data-target="500000">0</p>
+          <p class="stat-label">Expenses tracked</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-num" data-target="98">0</p>
+          <p class="stat-label">% satisfaction</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-num" data-target="150000">0</p>
+          <p class="stat-label">Settlements done</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Real stories</p>
+        <h2>What people are saying</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Finally, no more 'bhai tu kitna dega' drama. CampusSplit handles it all and everyone can see it clearly."</p>
+          <div class="testi-author">
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Rohan25" alt="Rohan" />
+            <div>
+              <p class="testi-name">Rohan Sharma</p>
+              <p class="testi-role">B.Tech CSE, Delhi</p>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card testi-card--featured">
+          <div class="testi-stars">★★★★★</div>
+          <p>"We used it for our Ladakh trip — 8 people, 12 days, hundreds of expenses. Settlement took literally 5 minutes at the end."</p>
+          <div class="testi-author">
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Priya_F" alt="Priya" />
+            <div>
+              <p class="testi-name">Priya Mehta</p>
+              <p class="testi-role">Software Engineer, Bengaluru</p>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Our office team uses it for monthly lunch pooling. Whoever orders just logs it — zero confusion by month end."</p>
+          <div class="testi-author">
+            <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Amit_K" alt="Amit" />
+            <div>
+              <p class="testi-name">Amit Kumar</p>
+              <p class="testi-role">Product Manager, Mumbai</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-glow"></div>
+        <p class="eyebrow" style="color:#A8FF78;">Start today</p>
+        <h2>Stop letting money get in the way</h2>
+        <p class="hero-tagline-hindi" lang="hi" style="font-size:1.2rem; margin-bottom:1rem;">हर खर्च का हिसाब, बिना किसी झंझट के।</p>
+        <p>CampusSplit is free to get started. Create your first group in 60 seconds.</p>
+        <div class="cta-buttons">
+          <a href="register.html" class="btn-primary btn-lg">Create free account</a>
+          <a href="login.html" class="btn-ghost-light">Already have an account? Log in →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-mark">
+              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="8" fill="#6C63FF"/>
+                <path d="M8 14h12M14 8v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="8" cy="14" r="2" fill="#A8FF78"/>
+                <circle cx="20" cy="14" r="2" fill="#A8FF78"/>
+                <circle cx="14" cy="8" r="2" fill="#A8FF78"/>
+                <circle cx="14" cy="20" r="2" fill="#A8FF78"/>
+              </svg>
+            </div>
+            <span class="logo-text">CampusSplit</span>
+          </a>
+          <p>Split bills fairly. Keep relationships intact.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <p class="footer-col-title">Product</p>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#use-cases">Use cases</a>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-title">Account</p>
+            <a href="login.html">Log in</a>
+            <a href="register.html">Sign up</a>
+            <a href="profile.html">Profile</a>
+          </div>
+          <div class="footer-col">
+            <p class="footer-col-title">Support</p>
+            <a href="#">Help center</a>
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms of use</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CampusSplit. Built with ❤️ for the people who always pay first.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -286,10 +286,11 @@ button { cursor: pointer; }
 
 .auth-right {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 40px 24px;
+  padding: 60px 24px;
   overflow-y: auto;
+  min-height: 100vh;
 }
 
 .auth-form-wrap {
@@ -705,10 +706,10 @@ button { cursor: pointer; }
 }
 
 .prog-dot {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 2px solid var(--c-border);
+  border: 2px solid rgba(255,255,255,0.1);
   background: var(--c-surface2);
   display: flex;
   align-items: center;
@@ -755,8 +756,8 @@ button { cursor: pointer; }
 
 .prog-line.done { background: var(--c-green); }
 
-.reg-step { display: none; }
-.reg-step.active { display: block; }
+.reg-step { display: none !important; }
+.reg-step.active { display: block !important; }
 
 .phone-step { display: block; }
 .phone-step.hidden { display: none; }
@@ -1082,3 +1083,37 @@ button { cursor: pointer; }
     animation: none;
   }
 }
+
+.step2-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btn-back {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--c-border);
+  color: var(--c-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 13px 18px;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.btn-back:hover {
+  border-color: rgba(255,255,255,0.18);
+  color: var(--c-text);
+}
+
+.step2-actions .btn-submit {
+  flex: 1;
+  margin-top: 0;
+}
+
+.reg-step.hidden { display: none !important; }
+.reg-step.active { display: block !important; }

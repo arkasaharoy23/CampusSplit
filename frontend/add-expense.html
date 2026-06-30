@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add expense — CampusSplit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/expense.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <a href="index.html" class="sidebar-logo">
+            <div class="logo-mark">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="8" fill="#6C63FF"/>
+                <path d="M8 14h12M14 8v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="8" cy="14" r="2" fill="#A8FF78"/>
+                <circle cx="20" cy="14" r="2" fill="#A8FF78"/>
+                <circle cx="14" cy="8" r="2" fill="#A8FF78"/>
+                <circle cx="14" cy="20" r="2" fill="#A8FF78"/>
+              </svg>
+            </div>
+            <span class="logo-text">CampusSplit</span>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="11" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="1" y="11" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="11" y="11" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="groups.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="6" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="13" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M1 15c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M13 11c1.657 0 3 1.343 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Groups</span>
+          </a>
+          <a href="add-expense.html" class="nav-item active">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9 5v8M5 9h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Add Expense</span>
+          </a>
+          <a href="settlements.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Settlements</span>
+          </a>
+          <a href="analytics.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M2 16L6 10l4 3 4-6 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Analytics</span>
+          </a>
+          <a href="notifications.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 2a5 5 0 015 5v3l1.5 2H2.5L4 10V7a5 5 0 015-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M7 14a2 2 0 004 0" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span>Notifications</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <a href="settings.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.42 1.42M13.36 13.36l1.42 1.42M3.22 14.78l1.42-1.42M13.36 4.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Settings</span>
+          </a>
+          <div class="sidebar-user" id="sidebarUser">
+            <div class="user-avatar" id="sidebarAvatar">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="6" r="3.5" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M2 16c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="user-info">
+              <p class="user-name" id="sidebarName">Loading…</p>
+              <p class="user-email" id="sidebarEmail"></p>
+            </div>
+            <button class="logout-btn" id="logoutBtn" title="Log out">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 2H3a1 1 0 00-1 1v10a1 1 0 001 1h3M10 11l3-3-3-3M13 8H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="main-area">
+
+      <header class="topbar">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-greeting">
+          <h1>Add an expense</h1>
+          <p>Log a cost and split it however makes sense</p>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="ae-wrap">
+
+          <div class="ae-card">
+
+            <div class="form-group" id="fg-group">
+              <label for="groupSelect">Group</label>
+              <div class="select-wrap">
+                <select id="groupSelect">
+                  <option value="">Loading your groups…</option>
+                </select>
+                <svg class="select-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <p class="field-error" id="err-group"></p>
+            </div>
+
+            <div class="form-group" id="fg-description">
+              <label for="expenseDescription">What was it for?</label>
+              <div class="input-wrap">
+                <input type="text" id="expenseDescription" placeholder="e.g. Beach dinner, Hotel booking, Cab fare" maxlength="60" />
+              </div>
+              <p class="field-error" id="err-description"></p>
+            </div>
+
+            <div class="amount-currency-row">
+              <div class="form-group" style="flex:1;" id="fg-amount">
+                <label for="expenseAmount">Amount</label>
+                <div class="input-wrap amount-input-wrap">
+                  <span class="currency-symbol" id="currencySymbol">₹</span>
+                  <input type="number" id="expenseAmount" placeholder="0" min="0" step="0.01" />
+                </div>
+                <p class="field-error" id="err-amount"></p>
+              </div>
+              <div class="form-group" id="fg-currency">
+                <label for="currencySelect">Currency</label>
+                <div class="select-wrap">
+                  <select id="currencySelect">
+                    <option value="INR">INR ₹</option>
+                    <option value="USD">USD $</option>
+                    <option value="EUR">EUR €</option>
+                    <option value="GBP">GBP £</option>
+                    <option value="JPY">JPY ¥</option>
+                    <option value="AUD">AUD $</option>
+                    <option value="CAD">CAD $</option>
+                    <option value="SGD">SGD $</option>
+                    <option value="AED">AED د.إ</option>
+                  </select>
+                  <svg class="select-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="conversion-note hidden" id="conversionNote">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span id="conversionText">Converting…</span>
+            </div>
+
+            <div class="form-group" id="fg-category">
+              <label>Category</label>
+              <div class="category-pills" id="expenseCategoryPills">
+                <button type="button" class="cat-pill selected" data-cat="food">🍽️ Food</button>
+                <button type="button" class="cat-pill" data-cat="travel">✈️ Travel</button>
+                <button type="button" class="cat-pill" data-cat="rent">🏠 Rent</button>
+                <button type="button" class="cat-pill" data-cat="fuel">⛽ Fuel</button>
+                <button type="button" class="cat-pill" data-cat="shopping">🛍️ Shopping</button>
+                <button type="button" class="cat-pill" data-cat="entertainment">🎬 Fun</button>
+                <button type="button" class="cat-pill" data-cat="other">💰 Other</button>
+              </div>
+            </div>
+
+            <div class="form-group" id="fg-paidby">
+              <label for="paidBySelect">Paid by</label>
+              <div class="select-wrap">
+                <select id="paidBySelect">
+                  <option value="">Select group first</option>
+                </select>
+                <svg class="select-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Split type</label>
+              <div class="split-type-pills" id="splitTypePills">
+                <button type="button" class="split-pill active" data-split="equal">Equal</button>
+                <button type="button" class="split-pill" data-split="percentage">Percentage</button>
+                <button type="button" class="split-pill" data-split="exact">Exact amounts</button>
+                <button type="button" class="split-pill" data-split="shares">Shares</button>
+              </div>
+            </div>
+
+            <div class="split-section" id="splitSection">
+              <p class="split-hint" id="splitHint">Split equally among all selected members</p>
+              <div class="split-members-list" id="splitMembersList"></div>
+              <div class="split-total-row" id="splitTotalRow"></div>
+            </div>
+
+            <div class="form-actions-ae">
+              <button type="button" class="btn-cancel-ae" id="cancelExpenseBtn">Cancel</button>
+              <button type="button" class="btn-save-ae" id="saveExpenseBtn">
+                <span class="btn-text">Save expense</span>
+                <svg class="btn-spinner hidden" id="saveExpenseSpinner" width="16" height="16" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="7" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                  <path d="M9 2a7 7 0 017 7" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script type="module" src="js/expenses/add-expense.js"></script>
+</body>
+</html>

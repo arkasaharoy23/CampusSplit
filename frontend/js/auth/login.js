@@ -14,6 +14,7 @@ import { firebaseConfig } from "../config/firebase-config.js";
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
 const toastContainer = document.getElementById("toastContainer");
 
@@ -121,12 +122,19 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 });
 
 document.getElementById("googleBtn").addEventListener("click", async () => {
+  const btn = document.getElementById("googleBtn");
+  btn.disabled = true;
+  btn.style.opacity = "0.6";
   try {
     await signInWithPopup(auth, googleProvider);
     showToast("Signed in with Google!", "success");
     setTimeout(() => { window.location.href = "dashboard.html"; }, 1000);
   } catch (err) {
-    if (err.code !== "auth/popup-closed-by-user") showToast(getFirebaseError(err.code), "error");
+    btn.disabled = false;
+    btn.style.opacity = "1";
+    if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
+      showToast(getFirebaseError(err.code), "error");
+    }
   }
 });
 

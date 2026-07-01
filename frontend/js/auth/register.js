@@ -19,6 +19,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
 let registeredUser = null;
 let formData = {};
@@ -253,6 +254,9 @@ document.getElementById("profileForm").addEventListener("submit", async (e) => {
 });
 
 document.getElementById("googleRegBtn").addEventListener("click", async () => {
+  const btn = document.getElementById("googleRegBtn");
+  btn.disabled = true;
+  btn.style.opacity = "0.6";
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
@@ -270,6 +274,10 @@ document.getElementById("googleRegBtn").addEventListener("click", async () => {
       setTimeout(() => { window.location.href = "dashboard.html"; }, 1000);
     }
   } catch (err) {
-    if (err.code !== "auth/popup-closed-by-user") showToast(getFirebaseError(err.code), "error");
+    btn.disabled = false;
+    btn.style.opacity = "1";
+    if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
+      showToast(getFirebaseError(err.code), "error");
+    }
   }
 });

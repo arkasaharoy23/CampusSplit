@@ -589,8 +589,8 @@
   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
-.invite-panel { display: none; }
-.invite-panel.active { display: block; }
+.invite-panel { display: none !important; }
+.invite-panel.active { display: block !important; }
 
 .invite-tab-desc {
   font-size: 0.84rem;
@@ -700,4 +700,134 @@
 .btn-download-qr:hover {
   border-color: rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
+}
+
+.eg-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  margin-bottom: 10px;
+}
+
+.eg-emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.emoji-option {
+  aspect-ratio: 1;
+  background: var(--c-surface2);
+  border: 1.5px solid var(--c-border);
+  border-radius: 10px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.emoji-option:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+
+.emoji-option.selected {
+  border-color: var(--c-primary);
+  background: rgba(108,99,255,0.1);
+  box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+}
+
+.eg-cat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.eg-cat-pill {
+  background: var(--c-surface2);
+  border: 1.5px solid var(--c-border);
+  color: var(--c-text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+
+.eg-cat-pill:hover { border-color: rgba(255,255,255,0.18); }
+
+.eg-cat-pill.selected {
+  border-color: var(--c-primary);
+  background: rgba(108,99,255,0.1);
+  color: var(--c-primary-light);
+}
+
+.form-group .input-wrap input {
+  width: 100%;
+  background: var(--c-surface2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group .input-wrap input:focus {
+  border-color: rgba(108,99,255,0.55);
+  box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+}
+
+.form-group .input-wrap input::placeholder { color: var(--c-text-dim); }
+
+.form-group.error .input-wrap input { border-color: rgba(239,68,68,0.5); }
+
+.field-error {
+  font-size: 0.76rem;
+  color: var(--c-red);
+  min-height: 14px;
+  margin-top: 4px;
+}
+
+.modal-box--edit-group {
+  max-width: 500px;
+}
+
+.edit-group-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn-cancel-edit {
+  flex: 1;
+  background: var(--c-surface2);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.btn-cancel-edit:hover {
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.04);
+}
+
+.edit-group-actions .btn-cg-create {
+  flex: 2;
+  justify-content: center;
+}
+
+#editGroupDesc:focus {
+  border-color: rgba(108,99,255,0.55) !important;
+  box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+  outline: none;
 }

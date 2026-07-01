@@ -11,7 +11,6 @@ import {
   collection,
   query,
   where,
-  orderBy,
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { firebaseConfig } from "../config/firebase-config.js";
@@ -117,7 +116,7 @@ document.querySelectorAll(".filter-pill").forEach(pill => {
 async function loadGroup() {
   if (!groupId) {
     showToast("No group specified.", "error");
-    setTimeout(() => { window.location.href = "dashboard.html"; }, 1500);
+    setTimeout(() => { window.location.href = "groups.html"; }, 1500);
     return;
   }
 
@@ -125,7 +124,7 @@ async function loadGroup() {
     const snap = await getDoc(doc(db, "groups", groupId));
     if (!snap.exists()) {
       showToast("Group not found.", "error");
-      setTimeout(() => { window.location.href = "dashboard.html"; }, 1500);
+      setTimeout(() => { window.location.href = "groups.html"; }, 1500);
       return;
     }
 
@@ -195,13 +194,18 @@ async function loadExpenses() {
   try {
     const q = query(
       collection(db, "expenses"),
-      where("groupId", "==", groupId),
-      orderBy("createdAt", "desc")
+      where("groupId", "==", groupId)
     );
     const snap = await getDocs(q);
 
     allExpenses = [];
     snap.forEach(docSnap => allExpenses.push({ id: docSnap.id, ...docSnap.data() }));
+
+    allExpenses.sort((a, b) => {
+      const aTime = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+      const bTime = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+      return bTime - aTime;
+    });
 
     if (allExpenses.length === 0) {
       timeline.classList.add("hidden");
@@ -448,6 +452,13 @@ function renderMembers() {
 const inviteModal = document.getElementById("inviteModal");
 function openInviteModal() {
   inviteModal.classList.remove("hidden");
+
+  document.querySelectorAll(".invite-tab").forEach((t, i) => t.classList.toggle("active", i === 0));
+  document.querySelectorAll(".invite-panel").forEach((p, i) => {
+    p.classList.toggle("active", i === 0);
+    p.style.display = i === 0 ? "block" : "none";
+  });
+
   setupInviteLinkAndQr();
 }
 document.getElementById("inviteMemberBtn").addEventListener("click", openInviteModal);
@@ -458,22 +469,6 @@ document.getElementById("inviteModalClose").addEventListener("click", () => {
   document.getElementById("err-invite-email").textContent = "";
 });
 inviteModal.addEventListener("click", (e) => { if (e.target === inviteModal) inviteModal.classList.add("hidden"); });
-
-document.querySelectorAll(".invite-tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-    document.querySelectorAll(".invite-tab").forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-    document.querySelectorAll(".invite-panel").forEach(p => {
-      p.classList.remove("active");
-      p.style.display = "none";
-    });
-    const target = document.getElementById(`inviteTab${tab.dataset.inviteTab.charAt(0).toUpperCase() + tab.dataset.inviteTab.slice(1)}`);
-    target.classList.add("active");
-    target.style.display = "block";
-
-    if (tab.dataset.inviteTab === "qr") renderQrCode();
-  });
-});
 
 function generateInviteCode() {
   return Array.from({ length: 10 }, () => "ABCDEFGHJKMNPQRSTUVWXYZ23456789"[Math.floor(Math.random() * 32)]).join("");
@@ -623,7 +618,12 @@ document.getElementById("groupMenuClose").addEventListener("click", () => groupM
 groupMenuModal.addEventListener("click", (e) => { if (e.target === groupMenuModal) groupMenuModal.classList.add("hidden"); });
 
 document.getElementById("editGroupBtn").addEventListener("click", () => {
-  window.location.href = `create-group.html?edit=${groupId}`;
+  groupMenuModal.classList.add("hidden");
+  openEditGroupModal();
+});
+
+document.getElementById("editGroupHeroBtn").addEventListener("click", () => {
+  openEditGroupModal();
 });
 
 document.getElementById("leaveGroupBtn").addEventListener("click", async () => {
@@ -663,6 +663,127 @@ document.getElementById("deleteGroupBtn").addEventListener("click", async () => 
     console.error(err);
     showToast("Could not delete group.", "error");
   }
+});
+
+let editSelectedEmoji = "👥";
+let editSelectedCategory = "general";
+
+function openEditGroupModal() {
+  if (!groupData) {
+    showToast("Group is still loading. Please wait.", "info");
+    return;
+  }
+  const modal = document.getElementById("editGroupModal");
+  modal.classList.remove("hidden");
+
+  document.getElementById("editGroupName").value = groupData.name || "";
+  document.getElementById("editGroupDesc").value = groupData.description || "";
+  editSelectedEmoji = groupData.emoji || "👥";
+  editSelectedCategory = groupData.category || "general";
+
+  document.querySelectorAll("#egEmojiGrid .emoji-option").forEach(btn => {
+    btn.classList.toggle("selected", btn.dataset.emoji === editSelectedEmoji);
+  });
+
+  document.querySelectorAll(".eg-cat-pill").forEach(btn => {
+    btn.classList.toggle("selected", btn.dataset.cat === editSelectedCategory);
+  });
+
+  document.getElementById("err-edit-name").textContent = "";
+}
+
+document.getElementById("editGroupModalClose").addEventListener("click", () => {
+  document.getElementById("editGroupModal").classList.add("hidden");
+});
+
+document.getElementById("cancelEditGroupBtn").addEventListener("click", () => {
+  document.getElementById("editGroupModal").classList.add("hidden");
+});
+
+document.getElementById("editGroupModal").addEventListener("click", (e) => {
+  if (e.target === document.getElementById("editGroupModal")) {
+    document.getElementById("editGroupModal").classList.add("hidden");
+  }
+});
+
+document.querySelectorAll("#egEmojiGrid .emoji-option").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#egEmojiGrid .emoji-option").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    editSelectedEmoji = btn.dataset.emoji;
+  });
+});
+
+document.querySelectorAll(".eg-cat-pill").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".eg-cat-pill").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    editSelectedCategory = btn.dataset.cat;
+  });
+});
+
+document.getElementById("saveEditGroupBtn").addEventListener("click", async () => {
+  const name = document.getElementById("editGroupName").value.trim();
+  const description = document.getElementById("editGroupDesc").value.trim();
+  const errEl = document.getElementById("err-edit-name");
+  errEl.textContent = "";
+
+  if (!name) { errEl.textContent = "Group name is required."; return; }
+  if (name.length < 2) { errEl.textContent = "Name is too short."; return; }
+
+  const btn = document.getElementById("saveEditGroupBtn");
+  const text = btn.querySelector(".btn-text");
+  const spinner = document.getElementById("editGroupSpinner");
+  text.style.opacity = "0.4";
+  spinner.classList.remove("hidden");
+  btn.disabled = true;
+
+  try {
+    await updateDoc(doc(db, "groups", groupId), {
+      name,
+      emoji: editSelectedEmoji,
+      category: editSelectedCategory,
+      description
+    });
+
+    groupData.name = name;
+    groupData.emoji = editSelectedEmoji;
+    groupData.category = editSelectedCategory;
+    groupData.description = description;
+
+    document.getElementById("gdName").textContent = name;
+    document.getElementById("gdIcon").textContent = editSelectedEmoji;
+
+    showToast("Group updated!", "success");
+    document.getElementById("editGroupModal").classList.add("hidden");
+  } catch (err) {
+    console.error(err);
+    showToast("Could not update group. Try again.", "error");
+  } finally {
+    text.style.opacity = "1";
+    spinner.classList.add("hidden");
+    btn.disabled = false;
+  }
+});
+
+document.querySelectorAll(".invite-tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".invite-tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    document.querySelectorAll(".invite-panel").forEach(p => {
+      p.classList.remove("active");
+      p.style.display = "none";
+    });
+    const key = tab.dataset.inviteTab;
+    const panelId = `inviteTab${key.charAt(0).toUpperCase() + key.slice(1)}`;
+    const target = document.getElementById(panelId);
+    if (target) {
+      target.classList.add("active");
+      target.style.display = "block";
+    }
+    if (key === "qr") renderQrCode();
+    if (key === "link") setupInviteLinkAndQr();
+  });
 });
 
 onAuthStateChanged(auth, async (user) => {

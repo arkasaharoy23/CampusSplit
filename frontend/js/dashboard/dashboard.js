@@ -170,7 +170,6 @@ async function loadGroups(uid) {
     const groups = [];
 
     docs.forEach(({ id, data: g }) => {
-      const docSnap = { id };
       groups.push({ id, ...g });
 
       const balance = g.memberBalances?.[uid] || 0;
@@ -178,7 +177,7 @@ async function loadGroups(uid) {
       const balanceLabel = balance > 0 ? "you're owed" : balance < 0 ? "you owe" : "settled";
 
       const card = document.createElement("a");
-      card.href = `group-details.html?id=${docSnap.id}`;
+      card.href = `group-details.html?id=${id}`;
       card.className = "group-card";
       card.innerHTML = `
         <div class="gc-icon" style="background:${getAvatarColor(g.name || "Group")};">${g.emoji || "👥"}</div>

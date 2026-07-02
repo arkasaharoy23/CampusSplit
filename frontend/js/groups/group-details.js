@@ -451,6 +451,10 @@ function renderMembers() {
 
 const inviteModal = document.getElementById("inviteModal");
 function openInviteModal() {
+  if (!groupData) {
+    showToast("Group is still loading. Please wait.", "info");
+    return;
+  }
   inviteModal.classList.remove("hidden");
 
   document.querySelectorAll(".invite-tab").forEach((t, i) => t.classList.toggle("active", i === 0));
@@ -480,6 +484,7 @@ function getInviteLink() {
 }
 
 async function setupInviteLinkAndQr() {
+  if (!groupData) return;
   if (!groupData.inviteCode) {
     const code = generateInviteCode();
     try {
